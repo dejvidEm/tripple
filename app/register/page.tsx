@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 
 const SignUpPage = () => {
@@ -9,7 +9,8 @@ const SignUpPage = () => {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    const response = await fetch('http://192.168.50.60:8000/register', {
+    // Zmeň URL na tvoju verejnú IP adresu
+    const response = await fetch('http://192.168.50.60:8000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
