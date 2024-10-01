@@ -9,8 +9,8 @@ const SignUpPage = () => {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    // Zmeň URL na tvoju verejnú IP adresu
-    const response = await fetch('http://193.186.4.50:8000/api/register', {
+    // API volanie na backend s verejnou IP adresou
+    const response = await fetch('http://195.28.146.105:3000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
