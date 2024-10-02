@@ -10,7 +10,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     // API volanie na backend s verejnou IP adresou
-    const response = await fetch('http://195.28.146.105:3000/api/register', {
+    const response = await fetch('http://195.28.146.105:8080/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
