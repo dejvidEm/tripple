@@ -10,7 +10,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     // API volanie na backend s verejnou IP adresou
-    const response = await fetch('http://195.28.146.105:8080/api/register', {
+    const response = await fetch('http://tripple.uniquesolutions.sk/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,11 +25,13 @@ const SignUpPage = () => {
     const data = await response.json();
 
     if (response.ok) {
-      // Úspešná registrácia
+
       console.log('Registration successful:', data);
     } else {
-      // Chyba pri registrácii
       console.log('Registration error:', data);
+
+
+      
     }
   };
 
