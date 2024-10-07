@@ -10,7 +10,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     // API volanie na backend s verejnou IP adresou
-    const response = await fetch('http://tripple.uniquesolutions.sk/auth/register', {
+    const response = await fetch('https://tripple.uniquesolutions.sk/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
