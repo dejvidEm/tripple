@@ -28,9 +28,9 @@ const SignUpPage = () => {
 
     if (response.ok) {
 
-      console.log('Registration successful:', data);
+      return data.json();
     } else {
-      console.log('Registration error:', data);
+      return data.json();
 
 
       
