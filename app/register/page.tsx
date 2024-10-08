@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 
+// update frontend
+
 const SignUpPage = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
