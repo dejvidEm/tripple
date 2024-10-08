@@ -38,7 +38,10 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className='w-full h-screen flex items-center justify-center bg-cover bg-center p-10' style={{ backgroundImage: "url('/images/bg-auth.jpg')" }}>
+    <div className='w-full h-screen flex flex-col gap-10 items-center justify-center bg-cover bg-center p-10' style={{ backgroundImage: "url('/images/bg-auth.jpg')" }}>
+      <div>
+        <img src="images/tripple_logo.png" alt="logo" className='rounded-[50%] w-40'/>
+      </div>
       <div className='bg-white bg-opacity-10 backdrop-blur-md pb-8 px-8 w-[450px] rounded-[10px] shadow-lg'>
         <div>
           <h1 className='flex justify-center text-xl text-gray-200 p-6 font-bold'>Sign Up Page</h1>
