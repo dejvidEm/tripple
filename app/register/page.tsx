@@ -52,7 +52,7 @@ const SignUpPage = () => {
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full'
+            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none'
           />
         </div>
         <div className='pb-2'>
@@ -61,7 +61,7 @@ const SignUpPage = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full'
+            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none'
           />
         </div>
         <div className='py-4'>
@@ -70,7 +70,7 @@ const SignUpPage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full'
+            className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none'
           />
         </div>
         <div className='flex gap-2'>

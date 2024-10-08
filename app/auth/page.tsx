@@ -15,14 +15,14 @@ const page = () => {
             <h1 className='text-gray-200 pt-2 px-2'>E-mail</h1>
             <input 
               type="text" 
-              className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full' 
+              className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none' 
             />
           </div>
           <div className='py-4'>
             <h1 className='text-gray-200 pt-2 px-2'>Password</h1>
             <input 
               type="password" 
-              className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full' 
+              className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none' 
             />
           </div>
           <div className='flex flex-row justify-between py-4'>
