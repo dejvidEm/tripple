@@ -20,6 +20,14 @@ const HomePage = () => {
           <h1 className="text-4xl text-white font-bold text-center sm:text-5xl">Tripple</h1>
           <h1 className="text-2xl text-white font-bold text-center sm:text-4xl">Welcome to Our Landing Page</h1>
           <h1 className="text-lg text-white font-bold text-center sm:text-3xl">Discover the world with us!</h1>
+          <div className='flex flex-row gap-4'>
+          <button className="bg-slate-500 hover:bg-slate-600 active:bg-slate-700 focus:outline-none focus:ring focus:ring-slate-300 rounded-2xl text-slate-50 px-4 py-2">
+            I'am User
+          </button>
+          <button className="bg-slate-500 hover:bg-slate-600 active:bgslatet-700 focus:outline-none focus:ring focus:ring-slate-300 rounded-2xl text-slate-50 px-4 py-2">
+            I'm Recruiter
+          </button>
+          </div>
         </section>
 
         <div className="h-48 clip-mountain bg-white z-10 -mb-[1px]"></div>
