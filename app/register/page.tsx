@@ -7,11 +7,14 @@ const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     try {
-      // API volanie na backend s verejnou IP adresou
+      // API volanie na backend s poziadavkou na registraciu
       const response = await fetch('https://tripple.uniquesolutions.sk/auth/register', {
         method: 'POST',
         headers: {
@@ -27,6 +30,11 @@ const SignUpPage = () => {
       if (response.ok) {
         const data = await response.json(); // Správne spracovanie JSON odpovede
         console.log(data);
+      } else if(response.status === 409) {
+        // ak sa email uz nachadza v databaze
+        const data = await response.json();
+        setErrorMessage(data.message);
+        setIsRegistered(true);
       } else {
         const errorData = await response.json(); // Získanie chybových dát
         console.log(errorData);
@@ -82,9 +90,16 @@ const SignUpPage = () => {
           <p className='text-gray-300 text-sm'>I agree with <span className='text-emerald-700'>privacy</span> and <span className='text-emerald-700'>policy</span></p>
         </div>
         <div className='flex flex-row justify-between py-4'>
+          {isRegistered && <div className="error"><p>{errorMessage}</p></div>}
           <button type="submit" className="relative font-semibold rounded-[10px] h-10 w-full overflow-hidden border border-black shadow-2xl before:absolute before:left-0 before:h-48 before:w-full before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:bg-gray-900 before:transition-all before:duration-300 hover:text-white hover:shadow-black hover:before:-rotate-180">
             <span className="relative z-10">Sign Up</span>
           </button>
+        </div>
+        <div className='flex justify-between items-center py-4 text-sm md:text-base'>
+          <p className='text-gray-300'>Already have an account?</p>
+          <a href="/auth">
+            <p className='text-emerald-500 font-medium'>Log In</p>
+          </a>
         </div>
       </form>
     </div>
