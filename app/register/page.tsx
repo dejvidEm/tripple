@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // update frontend
 const SignUpPage = () => {
@@ -7,8 +8,10 @@ const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -30,10 +33,16 @@ const SignUpPage = () => {
       if (response.ok) {
         const data = await response.json(); // Správne spracovanie JSON odpovede
         console.log(data);
+        
+        if (data.token) {
+          localStorage.setItem('token', data.token); // Uloženie do localStorage
+          router.push('/'); 
+        }
+
       } else if(response.status === 409) {
         // ak sa email uz nachadza v databaze
         const data = await response.json();
-        setErrorMessage(data.message);
+        setResponseMessage(data.message);
         setIsRegistered(true);
       } else {
         const errorData = await response.json(); // Získanie chybových dát
@@ -42,6 +51,12 @@ const SignUpPage = () => {
     } catch (error) {
       console.error('Chyba pri volaní API:', error);
     }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setResponseMessage(''); // resetovanie chybovej správy
+    setIsRegistered(false); // resetovanie stavu zaregistrovanosti
   };
 
   return (
@@ -68,7 +83,7 @@ const SignUpPage = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             className='pl-4 pb-1 caret-white outline-none h-10 border-b border-gray-300 bg-transparent text-gray-300 w-full rounded-none'
           />
         </div>
@@ -83,14 +98,14 @@ const SignUpPage = () => {
         </div>
         <div className='flex gap-2'>
           <input
-            className="h-4 w-4 text-green-800 focus:ring-green-800 border-gray-300 rounded"
+            className="h-4 w-4 border-gray-400 rounded-sm checked:bg-green-500 checked:border-green-500"
             type="checkbox"
-            id="rememberMe"
+            id="agree"
           />
-          <p className='text-gray-300 text-sm'>I agree with <span className='text-emerald-700'>privacy</span> and <span className='text-emerald-700'>policy</span></p>
+          <p className='text-gray-300 text-sm'>I agree with <span className='text-emerald-900'>privacy</span> and <span className='text-emerald-900'>policy</span></p>
         </div>
-        <div className='flex flex-row justify-between py-4'>
-          {isRegistered && <div className="error"><p>{errorMessage}</p></div>}
+        <div className='flex flex-col justify-between gap-4 py-4'>
+          {isRegistered && <div className="error border-2 border-red-400 rounded-xl p-2 text-center text-red-400"><p>{responseMessage}</p></div>}
           <button type="submit" className="relative font-semibold rounded-[10px] h-10 w-full overflow-hidden border border-black shadow-2xl before:absolute before:left-0 before:h-48 before:w-full before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:bg-gray-900 before:transition-all before:duration-300 hover:text-white hover:shadow-black hover:before:-rotate-180">
             <span className="relative z-10">Sign Up</span>
           </button>
