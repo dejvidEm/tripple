@@ -36,6 +36,7 @@ const SignUpPage = () => {
         
         if (data.token) {
           localStorage.setItem('token', data.token); // Uloženie do localStorage
+          document.cookie = `token=${data.token}; path=/; secure; httpOnly=false; samesite=strict;`;
           router.push('/'); 
         }
 
