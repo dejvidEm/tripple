@@ -35,9 +35,8 @@ const SignUpPage = () => {
         console.log(data);
         
         if (data.token) {
+          console.log(data.token);
           localStorage.setItem('token', data.token); // Uloženie do localStorage
-          document.cookie = `token=${data.token}; path=/; secure; httpOnly=false; samesite=strict;`;
-          router.push('/'); 
         }
 
       } else if(response.status === 409) {
