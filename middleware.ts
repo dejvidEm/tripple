@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import jwt from 'jsonwebtoken';
 
-const SECRET = process.env.JWT_SECRET || 'tripple_app_mikulas'; // Nahraďte tajným kľúčom
+const SECRET = 'tripple_app_mikulas'; // Nahraďte tajným kľúčom
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
